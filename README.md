@@ -21,6 +21,25 @@ MiniTasker 是一个方便切换线程去执行耗时任务，并且可以在需
 
 先利用 `AsyncTask` 的线程池来执行耗时任务，同时将结果缓存起来，然后通过 `Looper.getMainLooper()` 方法获取的 UI 线程的 Looper 构造一个 Handler ，然后给这个 Handler 发送一个消息，Handler 接受到这个消息后，在 `handleMessage` 方法里面执行回调方法，这样结果就回调给了 UI 进程。
 
+## 接入方法
 
+首先在 project 的 build.gradle 脚本添加
+
+```gradle
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+
+然后在 module 的  build.gradle 脚本添加
+
+```gradle
+dependencies {
+	compile 'com.github.XanderWang:MiniTasker:1.0.0'
+}
+```
 
 
