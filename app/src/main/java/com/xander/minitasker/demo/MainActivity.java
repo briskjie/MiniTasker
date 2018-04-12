@@ -18,19 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
     text = findViewById(R.id.text);
 
-    for( int i = 0 ; i < 20; i++ ) {
-      MiniTasker.run(new Tasker() {
-        @Override public void run() {
-          Log.d("wxy", "i am in Tasker");
-          Log.d("wxy", "Thread name:" + Thread.currentThread().getName());
-          try {
-            Thread.sleep(5000);
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
-        }
-      });
-    }
+    MiniTasker.run(new Tasker() {
+      @Override public void run() {
+        Log.d("wxy", "i am in Tasker");
+        Log.d("wxy", "Thread name:" + Thread.currentThread().getName());
+      }
+    });
 
     MiniTasker.runAndCallback(new UiTasker<String>() {
       @Override public String run() {
